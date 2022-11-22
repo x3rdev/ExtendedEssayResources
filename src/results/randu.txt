@@ -1,0 +1,4 @@
+Time for 100000000 numbers is 971.65 milliseconds 
+Repeats after 2147483648 numbers of output
+Interval of float outputs given 10 intervals: [10006.85, 9988.8, 9984.0, 9989.7, 9977.8, 9998.7, 9998.3, 10043.05, 10005.95, 10006.85]
+Chi square value of float outputs given 10 intervals: 0.296749999999999
