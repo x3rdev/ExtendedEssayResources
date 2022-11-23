@@ -17,20 +17,21 @@ public class LCGTest {
         seed = new Random().nextInt();
         if(seed < 0) seed *= -1;
         System.out.println("Seed is " + seed);
-        paramList.add(new ParameterSet("C++", 22695477, 1, (long) (Math.pow(2, 32))));
-        paramList.add(new ParameterSet("glibc", 1103515245, 1, (long) (Math.pow(2, 31))));
-        paramList.add(new ParameterSet("TurboPascal", 134775813, 1, (long) (Math.pow(2, 32))));
-        paramList.add(new ParameterSet("MicrosoftVisualC++", 214013, 2531011, (long) (Math.pow(2, 32))));
-        paramList.add(new ParameterSet("MicrosoftVisualBasic", 1140671485, 12820163, (long) (Math.pow(2, 34))));
-        paramList.add(new ParameterSet("NativeAPI", 2147483629, 2147483587, (long) (Math.pow(2, 31) - 1)));
-        paramList.add(new ParameterSet("C++11", 48271, 0, (long) (Math.pow(2, 31) - 1)));
-        paramList.add(new ParameterSet("Java", 25214903917L, 11, (long) (Math.pow(2, 48))));
-        paramList.add(new ParameterSet("random0", 8121, 28411, (long) (Math.pow(2, 3)*Math.pow(7, 5))));
+//        paramList.add(new ParameterSet("C++", 22695477, 1, (long) (Math.pow(2, 32))));
+//        paramList.add(new ParameterSet("glibc", 1103515245, 1, (long) (Math.pow(2, 31))));
+//        paramList.add(new ParameterSet("TurboPascal", 134775813, 1, (long) (Math.pow(2, 32))));
+//        paramList.add(new ParameterSet("MicrosoftVisualC++", 214013, 2531011, (long) (Math.pow(2, 32))));
+//        paramList.add(new ParameterSet("MicrosoftVisualBasic", 1140671485, 12820163, (long) (Math.pow(2, 34))));
+//        paramList.add(new ParameterSet("NativeAPI", 2147483629, 2147483587, (long) (Math.pow(2, 31) - 1)));
+//        paramList.add(new ParameterSet("C++11", 48271, 0, (long) (Math.pow(2, 31) - 1)));
+//        paramList.add(new ParameterSet("Java", 25214903917L, 11, (long) (Math.pow(2, 48))));
+//        paramList.add(new ParameterSet("random0", 8121, 28411, (long) (Math.pow(2, 3)*Math.pow(7, 5))));
         paramList.add(new ParameterSet("cc65", 65793, 826366247, (long) (Math.pow(2, 23))));
-        paramList.add(new ParameterSet("RANDU", 65539, 0, (long) (Math.pow(2, 31))));
+//        paramList.add(new ParameterSet("RANDU", 65539, 0, (long) (Math.pow(2, 31))));
         for(ParameterSet set : paramList) {
-            spectralTest(set);
+//            spectralTest(set);
             toFile(set);
+            intervalTest(set, 10);
         }
     }
 
@@ -71,7 +72,7 @@ public class LCGTest {
         //Ugly solution
         int modifier = 0;
         double power = Math.log(set.modulus()) / Math.log(2);
-        if(power != (int) power) {
+        if(power != (int) power || power < 32) {
             modifier = 1;
         }
         int[] distribution = new int[intervals];
